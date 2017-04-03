@@ -1,3 +1,12 @@
+/*			Cards
+ * 
+ * Programmer: Nick Couzelis
+ * 		 Date: 29/03/2017
+ * 
+ * This program finds a random card or user selected card from a number.
+ * goo.gl/Bdq728
+ */
+
 package card;
 
 import java.awt.BorderLayout;
@@ -16,6 +25,7 @@ import java.awt.color.*;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 
 public class Frame extends JFrame {
 
@@ -39,7 +49,56 @@ public class Frame extends JFrame {
 			}
 		});
 	}
+	
+	/**
+	 * Set outputs from card number.
+	 */
+	public void cardInfo(int num){
+		if(num<=13){
+			txtSuit.setText("Clubs");
+			txtSuit.setForeground(Color.BLACK);
+		}else if(num<=26){
+			txtSuit.setText("Spades");
+			txtSuit.setForeground(Color.BLACK);
+		}else if(num<=39){
+			txtSuit.setText("Hearts");
+			txtSuit.setForeground(Color.RED);
+		}else{
+			txtSuit.setText("Diamonds");
+			txtSuit.setForeground(Color.RED);
+		}
 
+		switch(num % 13){
+		case 0: txtValue.setText("King");	//0 is King as 13%13 or 39%13 is 0
+				break;
+		case 1:	txtValue.setText("Ace");
+				break;
+		case 2:	txtValue.setText("Two");
+				break;
+		case 3:	txtValue.setText("Three");
+				break;
+		case 4:	txtValue.setText("Four");
+				break;
+		case 5:	txtValue.setText("Five");
+				break;
+		case 6:	txtValue.setText("Six");
+				break;
+		case 7:	txtValue.setText("Seven");
+				break;
+		case 8:	txtValue.setText("Eight");
+				break;
+		case 9:	txtValue.setText("Nine");
+				break;
+		case 10:txtValue.setText("Ten");
+				break;
+		case 11:txtValue.setText("Jack");
+				break;
+		case 12:txtValue.setText("Queen");
+				break;
+		}
+	}
+	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -58,51 +117,11 @@ public class Frame extends JFrame {
 		btnRandom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Variable List
-				int num = (int)(Math.random()*52); //Random number from 1-52
-				txtInput.setText("");
-			if(num<=13){
-				txtSuit.setText("Clubs");
-				txtSuit.setForeground(Color.BLACK);
-			}else if(num<=26){
-				txtSuit.setText("Spades");
-				txtSuit.setForeground(Color.BLACK);
-			}else if(num<=39){
-				txtSuit.setText("Hearts");
-				txtSuit.setForeground(Color.RED);
-			}else{
-				txtSuit.setText("Diamonds");
-				txtSuit.setForeground(Color.RED);
+				int num = (int)(Math.random()*52); 			//Random number from 1-52
+				
+				txtInput.setText(Integer.toString(num));	//Set Input Field to number selected
+				cardInfo(num);
 			}
-
-			switch(num % 13){
-			case 1:	txtValue.setText("Ace");
-					break;
-			case 2:	txtValue.setText("Two");
-					break;
-			case 3:	txtValue.setText("Three");
-					break;
-			case 4:	txtValue.setText("Four");
-					break;
-			case 5:	txtValue.setText("Five");
-					break;
-			case 6:	txtValue.setText("Six");
-					break;
-			case 7:	txtValue.setText("Seven");
-					break;
-			case 8:	txtValue.setText("Eight");
-					break;
-			case 9:	txtValue.setText("Nine");
-					break;
-			case 10:txtValue.setText("Ten");
-					break;
-			case 11:txtValue.setText("Jack");
-					break;
-			case 12:txtValue.setText("Queen");
-					break;
-			case 13:txtValue.setText("King");
-					break;
-			}
-		}
 		});
 		btnRandom.setMargin(new Insets(2, 2, 2, 2));
 		btnRandom.setBounds(10, 11, 89, 23);
@@ -128,48 +147,8 @@ public class Frame extends JFrame {
 					txtSuit.setText("");
 					return;
 				}
-				if(num<=13){
-					txtSuit.setText("Clubs");
-					txtSuit.setForeground(Color.BLACK);
-				}else if(num<=26){
-					txtSuit.setText("Spades");
-					txtSuit.setForeground(Color.BLACK);
-				}else if(num<=39){
-					txtSuit.setText("Hearts");
-					txtSuit.setForeground(Color.RED);
-				}else{
-					txtSuit.setText("Diamonds");
-					txtSuit.setForeground(Color.RED);
-				}
-
-				switch(num % 13){
-				case 0: txtValue.setText("King");
-						break;
-				case 1:	txtValue.setText("Ace");
-						break;
-				case 2:	txtValue.setText("Two");
-						break;
-				case 3:	txtValue.setText("Three");
-						break;
-				case 4:	txtValue.setText("Four");
-						break;
-				case 5:	txtValue.setText("Five");
-						break;
-				case 6:	txtValue.setText("Six");
-						break;
-				case 7:	txtValue.setText("Seven");
-						break;
-				case 8:	txtValue.setText("Eight");
-						break;
-				case 9:	txtValue.setText("Nine");
-						break;
-				case 10:txtValue.setText("Ten");
-						break;
-				case 11:txtValue.setText("Jack");
-						break;
-				case 12:txtValue.setText("Queen");
-						break;
-				}
+				
+				cardInfo(num);
 				
 			}
 		});
