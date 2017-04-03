@@ -52,6 +52,7 @@ public class Frame extends JFrame {
 	
 	/**
 	 * Set outputs from card number.
+	 * @param num	Card value.
 	 */
 	public void cardInfo(int num){
 		if(num<=13){
